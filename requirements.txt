@@ -1,7 +1,8 @@
 absl-py==2.1.0
 altair==5.5.0
 altgraph==0.17.4
-array_record==0.5.1
+#array_record==0.5.1 not available
+array_record
 astunparse==1.6.3
 attrs==24.2.0
 audioread==3.0.1

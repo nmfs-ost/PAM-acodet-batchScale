@@ -1,0 +1,41 @@
+version: '3.8'
+
+#build detector if haven't yet published
+services:
+  rclone-input:
+    image: rclone/rclone:latest
+    command: mount pamdata-gcs:${AUDIO_FOLDER} /mnt/input --allow-other --config /config/rclone.conf --allow-non-empty
+    cap_add:
+      - SYS_ADMIN
+    devices:
+      - /dev/fuse
+    security_opt:
+      - apparmor:unconfined
+    volumes:
+      - .:/config
+      - ./input:/mnt/input:shared
+  rclone-output:
+    image: rclone/rclone:latest
+    command: mount pamdata-gcs:${OUTPUT_FOLDER}/${DEPLOYMENT_ID} /mnt/output --allow-other --vfs-cache-mode writes --config /config/rclone.conf --allow-non-empty
+    cap_add:
+      - SYS_ADMIN
+    devices:
+      - /dev/fuse
+    security_opt:
+      - apparmor:unconfined
+    volumes:
+      - .:/config
+      - ./output:/mnt/output:shared
+  nefsc-humpback-detector:
+    build:
+      context: .
+    #image: us-east4-docker.pkg.dev/ggn-nmfs-pamdata-prod-1/pamdata-docker-repo/nefsc-humpback-detector:latest
+    depends_on:
+      - rclone-input
+      - rclone-output
+    volumes:
+      - ./input:/input:shared,ro
+      - ./output:/output:shared
+    environment:
+      THRESHOLD: ${THRESHOLD
+      PREDICTION_WINDOW_LIMIT: ${PREDICTION_WINDOW_LIMIT}
