@@ -23,7 +23,6 @@ for (( i=0; i<LENGTH; i++ )); do
   THRESH=0.9
   PREDICTION_WINDOW_LIMIT=1000
 
-  
   gcloud beta run jobs deploy nefsc-humpback-detector-$DEPLOYMENT_ID-$i --update-env-vars THRESH=${THRESH},PREDICTION_WINDOW_LIMIT=${PREDICTION_WINDOW_LIMIT} --image us-east4-docker.pkg.dev/ggn-nmfs-pamdata-prod-1/pamdata-docker-repo/nefsc-humpback-detector:latest --add-volume name=input-volume,type=cloud-storage,bucket=$(echo $DATA_PATH | cut -d "/" -f1),mount-options=only-dir=$(echo $DATA_PATH | cut -d "/" -f2-) --add-volume name=output-volume,type=cloud-storage,bucket=$(echo $OUTPUT_PATH | cut -d "/" -f1),mount-options=only-dir=$(echo $OUTPUT_PATH | cut -d "/" -f2-)/$(echo $DATA_PATH | rev | cut -d "/" -f1-2 | rev) --add-volume-mount volume=input-volume,mount-path=/input --add-volume-mount volume=output-volume,mount-path=/output --service-account=app-dev-sa@ggn-nmfs-pamdata-prod-1.iam.gserviceaccount.com --region=us-east4 --memory=32Gi --cpu 8 --task-timeout 168h --labels deployment-id=${DEPLOYMENT_ID} --labels detector-name=nefsc-humpback-detector
 
   gcloud run jobs execute nefsc-humpback-detector-$DEPLOYMENT_ID-$i --region=us-east4;

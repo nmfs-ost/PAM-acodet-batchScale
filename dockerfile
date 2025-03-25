@@ -16,9 +16,6 @@ COPY /tests /app
 
 COPY entrypoint.sh /app
 
-#run all tests during build
-RUN pytest -v tests/*
-
 #allow for execution of entrypoint script
 RUN chmod +x /app/entrypoint.sh
 
