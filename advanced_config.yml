@@ -52,7 +52,7 @@ scale_fmax_with_predictions: True
 # only change when really necessary
 tfrecords_destination_folder: '../Data/Datasets'
 # default folder to store newly created annotations
-generated_annotations_folder: '../generated_annotations'
+generated_annotations_folder: '/output/generated_annotations'
 # name of current North Atlantic humpback whale song model
 model_name: 'Humpback_20221130'
 # name of top level directory when annotating multiple datasets
