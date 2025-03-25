@@ -7,12 +7,11 @@ COPY requirements.txt /app
 RUN pip install -r requirements.txt
 
 #copy application files
-COPY /acodet /app
+COPY /acodet /app/acodet
 COPY rclone.conf /app
 COPY advanced_config.yml /app
 COPY simple_config.yml /app
 COPY run.py /app
-COPY /tests /app
 
 COPY entrypoint.sh /app
 
