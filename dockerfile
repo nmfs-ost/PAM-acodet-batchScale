@@ -12,6 +12,7 @@ COPY rclone.conf /app
 COPY advanced_config.yml /app
 COPY simple_config.yml /app
 COPY run.py /app
+COPY stage_params.py /app
 
 COPY entrypoint.sh /app
 
