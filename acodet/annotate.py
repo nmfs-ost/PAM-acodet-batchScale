@@ -100,9 +100,11 @@ class MetaData:
 def run_annotation(train_date=None, **kwargs):
     files = get_files(location=conf.SOUND_FILES_SOURCE, search_str="**/*")
     if not "timestamp_folder" in conf.session:
-        timestamp_foldername = time.strftime(
-            "%Y-%m-%d_%H-%M-%S", time.gmtime()
-        )
+        #DFW- remove this behavior to make outputs more predictable and favor fault tolerance.
+        #timestamp_foldername = time.strftime(
+        #    "%Y-%m-%d_%H-%M-%S", time.gmtime()
+        #)
+        timestamp_foldername = "out"
         timestamp_foldername += conf.ANNOTS_TIMESTAMP_FOLDER
         mdf = MetaData()
         f_ind = 0
@@ -143,6 +145,10 @@ def run_annotation(train_date=None, **kwargs):
 
         st.session_state.progbar1 = 0
     for i, file in enumerate(files):
+
+
+        #test if file has been processed already
+
         if file.is_dir():
             continue
 
@@ -161,6 +167,7 @@ def run_annotation(train_date=None, **kwargs):
             **kwargs,
         )
         computing_time = time.time() - start
+
         mdf.append_and_save_meta_file(
             file,
             annot,

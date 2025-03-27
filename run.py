@@ -78,3 +78,8 @@ if __name__ == "__main__":
 
     create_session_file()
     main()
+
+    #DFW write out after done so that entrypoint.sh in container know to stop retries. 
+    with open('donefile.txt', 'w') as donefile:
+        donefile.write('im done')
+

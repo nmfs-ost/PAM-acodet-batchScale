@@ -10,8 +10,7 @@ DOCKER_CONTENT_TRUST=0 docker push us-east4-docker.pkg.dev/ggn-nmfs-pamdata-prod
 
 #run 
 
-INPUT_PATHS=("nefsc-1/bottom_mounted/NEFSC_MA-RI/NEFSC_MA-RI_202103_NS02/5420_48kHz_UTC" "nefsc-1/bottom_mounted/NEFSC_SBNMS/NEFSC_SBNMS_202004_SB01/67403784_48kHz" "nefsc-1/bottom_mounted/NEFSC_GOM/NEFSC_GOM_202204_YORK/NEFSC_GOM_202204_YORK_ST/5419_48kHz_UTC" "nefsc-1/bottom_mounted/NEFSC_SBNMS/NEFSC_SBNMS_202206_SB03/1677778970_48kHz" "nefsc-1/bottom_mounted/NEFSC_GOM/NEFSC_GOM_202107_LUBEC/NEFSC_GOM_202107_LUBEC_ST/5426_48kHz_UTC")
-
+INPUT_PATHS=("nefsc-1/bottom_mounted/NEFSC_MA-RI/NEFSC_MA-RI_202103_NS02/5420_48kHz_UTC" "nefsc-1/bottom_mounted/NEFSC_SBNMS/NEFSC_SBNMS_202004_SB01/67403784_48kHz")
 LENGTH=${#INPUT_PATHS[@]}
 
 for (( i=0; i<LENGTH; i++ )); do

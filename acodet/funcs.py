@@ -1,5 +1,6 @@
 from email import generator
 import re
+import os #DFW
 import zipfile
 import datetime as dt
 import json
@@ -11,8 +12,6 @@ import pandas as pd
 from . import global_config as conf
 
 ############# ANNOTATION helpers ############################################
-
-
 def remove_str_flags_from_predictions(df):
     # TODO wenn annotation_column nicht in columns ist fehler raisen
     n = df.loc[df[conf.ANNOTATION_COLUMN] == "n"].index
@@ -738,16 +737,7 @@ def gen_annotations(
 
     channel = get_channel(get_top_dir(parent_dirs))
 
-    audio = load_audio(file, channel)
-    if audio is None:
-        raise ImportError(
-            f"The audio file `{str(file)}` cannot be loaded. Check if file has "
-            "one of the supported endings "
-            "(wav, mp3, flac, etc.)) and is not empty."
-        )
-    audio_batches = batch_audio(audio)
-
-    annotation_df = create_annotation_df(audio_batches, model, **kwargs)
+    #DFW- rework to first calculate the path, look for the output, then run the code if output doesn't already exist.
 
     save_path = (
         Path(conf.GEN_ANNOTS_DIR)
@@ -755,9 +745,28 @@ def gen_annotations(
         .joinpath(conf.THRESH_LABEL)
         .joinpath(parent_dirs)
     )
-    save_path.mkdir(exist_ok=True, parents=True)
-    annotation_df.to_csv(
-        save_path.joinpath(f"{file.stem}_annot_{mod_label}.txt"), sep="\t"
-    )
+
+    outpath = save_path.joinpath(f"{file.stem}_annot_{mod_label}.txt")
+
+    if os.path.exists(outpath):
+        print(f"output: {outpath} exists, skipping")
+        annotation_df = pd.read_csv(outpath, sep='\t')
+    else:
+
+        save_path.mkdir(exist_ok=True, parents=True)
+        audio = load_audio(file, channel)
+        if audio is None:
+            raise ImportError(
+                f"The audio file `{str(file)}` cannot be loaded. Check if file has "
+                "one of the supported endings "
+                "(wav, mp3, flac, etc.)) and is not empty."
+            )
+        audio_batches = batch_audio(audio)
+
+        annotation_df = create_annotation_df(audio_batches, model, **kwargs)
+
+        annotation_df.to_csv(
+            save_path.joinpath(f"{file.stem}_annot_{mod_label}.txt"), sep="\t"
+        )
 
     return annotation_df

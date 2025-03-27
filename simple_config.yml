@@ -70,6 +70,13 @@ reviewed_annotation_source: '/output/annotations'
 # if unsure, leave unchanged. 
 annotation_destination: '/output/combined_annotations'
 
+
+#DFW for local testing:
+#sound_files_source: "./tests/test_datasets/audio/BERCHOK_SAMANA_200901_4"
+#generated_annotation_source: "./outputs"
+#reviewed_annotation_source: "./outputs"
+#annotation_destination: "./outputs"
+
 ####################### 3. DEFINE YOUR PARAMETERS  ###########################
 
 ## Model Parameters

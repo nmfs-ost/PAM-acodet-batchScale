@@ -13,8 +13,6 @@ from acodet.augmentation import run_augment_pipeline
 from acodet import global_config as conf
 
 AUTOTUNE = tf.data.AUTOTUNE
-
-
 def run_training(
     ModelClassName=conf.MODELCLASSNAME,
     data_dir=conf.TFREC_DESTINATION,
