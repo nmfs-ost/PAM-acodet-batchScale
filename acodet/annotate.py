@@ -168,14 +168,15 @@ def run_annotation(train_date=None, **kwargs):
         )
         computing_time = time.time() - start
 
-        mdf.append_and_save_meta_file(
-            file,
-            annot,
-            f_ind,
-            timestamp_foldername,
-            computing_time=computing_time,
-            **kwargs,
-        )
+        if annot is not None:
+            mdf.append_and_save_meta_file(
+                file,
+                annot,
+                f_ind,
+                timestamp_foldername,
+                computing_time=computing_time,
+                **kwargs,
+            )
     return timestamp_foldername
 
 

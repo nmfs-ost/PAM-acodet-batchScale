@@ -751,15 +751,16 @@ def gen_annotations(
     if os.path.exists(outpath):
         print(f"output: {outpath} exists, skipping")
         annotation_df = pd.read_csv(outpath, sep='\t')
+    elif not outpath.suffix.lower().endswith((".wav",".flac",".mp3")):
+        print(f"output {outpath} is not a raw acoustic data file, skipping")
+        annotation_df = None
     else:
 
         save_path.mkdir(exist_ok=True, parents=True)
         audio = load_audio(file, channel)
         if audio is None:
             raise ImportError(
-                f"The audio file `{str(file)}` cannot be loaded. Check if file has "
-                "one of the supported endings "
-                "(wav, mp3, flac, etc.)) and is not empty."
+                f"The audio file `{str(file)}` cannot be loaded."
             )
         audio_batches = batch_audio(audio)
 
