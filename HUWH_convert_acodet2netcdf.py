@@ -21,14 +21,13 @@ thresholds = list(set([0.5,thresh]))
 for i in thresholds:
 
     detec_files_dir =f'/output/thresh_{i}'
-    audio_files_dir ="/input"
     nc_files_out_dir = f'output/netcdf_{i}'
     audio_file_extension = '.wav'
     audio_channel = 1
     class_label = 'HB'
 
     detector_suffix='_annot_Humpback_20221130.txt'
-    detec_files = [f for f in os.listdir(audio_files_dir) if f.endswith(audio_file_extension)]
+    detec_files = [f for f in os.listdir(detec_files_dir) if f.endswith(detector_suffix)]
 
     for detec_file in detec_files:
 
@@ -52,7 +51,7 @@ for i in thresholds:
         data.frequency_min = file_data['Low Freq (Hz)']
         data.confidence = file_data['Prediction/Comments']
         data.audio_file_name = audio_file_name
-        data.audio_file_dir = audio_files_dir
+        data.audio_file_dir = "NA when running on cloud due to mount abstraction"
         data.audio_file_extension = audio_file_extension
         file_timestamp = filename_to_datetime(audio_file_name + audio_file_extension)
         data.audio_file_start_date = file_timestamp[0]
