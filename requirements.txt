@@ -153,3 +153,5 @@ beautifulsoup4==4.13.3
 filelock==3.17.0 
 gdown==5.2.0 
 soupsieve==2.6
+
+ecosound
