@@ -12,6 +12,8 @@ import uuid
 import sys
 import shutil
 
+print(sys.argv)
+
 if len(sys.argv)==1:
     thresh = 0.5
 else:
