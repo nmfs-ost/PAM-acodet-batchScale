@@ -743,7 +743,7 @@ def gen_annotations(
         Path(conf.GEN_ANNOTS_DIR)
         .joinpath(timestamp_foldername)
         .joinpath(conf.THRESH_LABEL)
-        .joinpath(parent_dirs)
+        #.joinpath(parent_dirs) #comment this out, think it's unneeded. 
     )
 
     outpath = save_path.joinpath(f"{file.stem}_annot_{mod_label}.txt")

@@ -9,6 +9,8 @@ eval $CMD1
 
 CMD2="python /app/run.py"
 
+CMD3="python /app/HUWH_convert_acodet2netcdf.py"
+
 ITERATION=1
 while [ ! -f "donefile.txt" ]; do
   echo ITERATION:$ITERATION $CMD2
@@ -16,3 +18,6 @@ while [ ! -f "donefile.txt" ]; do
   ((ITERATION++))
 done
 
+[ ! -z "${THRESH}" ] && CMD3+=" $THRESH"
+
+eval $CMD3 

@@ -13,6 +13,7 @@ COPY advanced_config.yml /app
 COPY simple_config.yml /app
 COPY run.py /app
 COPY stage_params.py /app
+COPY HUWH_convert_acodet2netcdf.py /app
 
 COPY entrypoint.sh /app
 

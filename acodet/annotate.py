@@ -104,7 +104,8 @@ def run_annotation(train_date=None, **kwargs):
         #timestamp_foldername = time.strftime(
         #    "%Y-%m-%d_%H-%M-%S", time.gmtime()
         #)
-        timestamp_foldername = "out"
+	#go a step further, test blanking this out
+        timestamp_foldername = "selection_table_output"
         timestamp_foldername += conf.ANNOTS_TIMESTAMP_FOLDER
         mdf = MetaData()
         f_ind = 0
@@ -145,9 +146,6 @@ def run_annotation(train_date=None, **kwargs):
 
         st.session_state.progbar1 = 0
     for i, file in enumerate(files):
-
-
-        #test if file has been processed already
 
         if file.is_dir():
             continue
