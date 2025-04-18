@@ -28,7 +28,7 @@ for i in thresholds:
     class_label = 'HB'
 
     detector_suffix='_annot_Humpback_20221130.txt'
-    detec_files = [f for f in os.listdid(audio_files_dir) if f.endswith(audio_file_extension)]
+    detec_files = [f for f in os.listdir(audio_files_dir) if f.endswith(audio_file_extension)]
 
     for detec_file in detec_files:
 
