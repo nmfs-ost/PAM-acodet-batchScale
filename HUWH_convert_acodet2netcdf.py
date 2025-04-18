@@ -20,11 +20,13 @@ thresholds = list(set([0.5,thresh]))
 
 for i in thresholds:
 
-    detec_files_dir =f'/output/thresh_{i}'
-    nc_files_out_dir = f'/output/netcdf_{i}'
+    detec_files_dir =f'/output/selection_table_output/thresh_{i}'
+    nc_files_out_dir = f'/output/netcdf_output/thresh_{i}'
     audio_file_extension = '.wav'
     audio_channel = 1
     class_label = 'HB'
+
+    os.makedirs(os.path.dirname(nc_files_out_dir),exist_ok=True)
 
     detector_suffix='_annot_Humpback_20221130.txt'
     detec_files = [f for f in os.listdir(detec_files_dir) if f.endswith(detector_suffix)]
