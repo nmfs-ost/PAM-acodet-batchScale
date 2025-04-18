@@ -29,7 +29,7 @@ for i in thresholds:
     os.makedirs(os.path.dirname(nc_files_out_dir),exist_ok=True)
 
     detector_suffix='_annot_Humpback_20221130.txt'
-    detec_files = [f for f in os.listdir(detec_files_dir) if f.endswith(detector_suffix)]
+    detec_files = [os.path.join(detec_files_dir,f) for f in os.listdir(detec_files_dir) if f.endswith(detector_suffix)]
 
     for detec_file in detec_files:
 
@@ -37,9 +37,6 @@ for i in thresholds:
         file_string = os.path.split(detec_file)[1]
         pos_detector_suffix = file_string.find(detector_suffix)
         audio_file_name = file_string[0:pos_detector_suffix]
-
-        #troubleshoot
-        print(detec_file)
 
         # load detection data
         file_data = Annotation._import_csv_files(detec_file)
