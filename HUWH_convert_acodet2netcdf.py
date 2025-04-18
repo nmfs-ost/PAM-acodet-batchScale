@@ -27,8 +27,7 @@ for i in thresholds:
     audio_channel = 1
     class_label = 'HB'
 	
-    print(os.path.dirname(nc_files_out_dir))
-    os.makedirs(os.path.dirname(nc_files_out_dir),exist_ok=True)
+    os.makedirs(nc_files_out_dir,exist_ok=True)
 
     detector_suffix='_annot_Humpback_20221130.txt'
     detec_files = [os.path.join(detec_files_dir,f) for f in os.listdir(detec_files_dir) if f.endswith(detector_suffix)]
