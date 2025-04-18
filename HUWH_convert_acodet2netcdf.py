@@ -38,6 +38,9 @@ for i in thresholds:
         pos_detector_suffix = file_string.find(detector_suffix)
         audio_file_name = file_string[0:pos_detector_suffix]
 
+        #troubleshoot
+        print(detec_file)
+
         # load detection data
         file_data = Annotation._import_csv_files(detec_file)
         columns = file_data.columns.to_list()
