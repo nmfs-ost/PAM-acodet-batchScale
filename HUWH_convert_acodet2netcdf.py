@@ -21,7 +21,7 @@ thresholds = list(set([0.5,thresh]))
 for i in thresholds:
 
     detec_files_dir =f'/output/thresh_{i}'
-    nc_files_out_dir = f'output/netcdf_{i}'
+    nc_files_out_dir = f'/output/netcdf_{i}'
     audio_file_extension = '.wav'
     audio_channel = 1
     class_label = 'HB'
