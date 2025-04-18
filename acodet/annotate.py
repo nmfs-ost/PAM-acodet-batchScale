@@ -99,6 +99,7 @@ class MetaData:
 
 def run_annotation(train_date=None, **kwargs):
     files = get_files(location=conf.SOUND_FILES_SOURCE, search_str="**/*")
+
     if not "timestamp_folder" in conf.session:
         #DFW- remove this behavior to make outputs more predictable and favor fault tolerance.
         #timestamp_foldername = time.strftime(
@@ -109,6 +110,7 @@ def run_annotation(train_date=None, **kwargs):
         timestamp_foldername += conf.ANNOTS_TIMESTAMP_FOLDER
         mdf = MetaData()
         f_ind = 0
+
 
     else:
         timestamp_foldername = conf.session[
@@ -128,6 +130,7 @@ def run_annotation(train_date=None, **kwargs):
     if not train_date:
         model = models.init_model()
         mod_label = conf.MODEL_NAME
+
     else:
         df = pd.read_csv("../trainings/20221124_meta_trainings.csv")
         row = df.loc[df["training_date"] == train_date]
@@ -145,7 +148,11 @@ def run_annotation(train_date=None, **kwargs):
         import streamlit as st
 
         st.session_state.progbar1 = 0
+
+
     for i, file in enumerate(files):
+
+        print(file)
 
         if file.is_dir():
             continue
@@ -175,6 +182,9 @@ def run_annotation(train_date=None, **kwargs):
                 computing_time=computing_time,
                 **kwargs,
             )
+
+    print('debug 5')
+
     return timestamp_foldername
 
 

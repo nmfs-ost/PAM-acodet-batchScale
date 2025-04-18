@@ -751,8 +751,8 @@ def gen_annotations(
     if os.path.exists(outpath):
         print(f"output: {outpath} exists, skipping")
         annotation_df = pd.read_csv(outpath, sep='\t')
-    elif not outpath.suffix.lower().endswith((".wav",".flac",".mp3")):
-        print(f"output {outpath} is not a raw acoustic data file, skipping")
+    elif not file.suffix.lower().endswith((".wav",".flac",".mp3")):
+        print(f"output: {file} is not a raw acoustic data file, skipping")
         annotation_df = None
     else:
 

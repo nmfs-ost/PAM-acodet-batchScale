@@ -63,12 +63,12 @@ generated_annotation_source: '/output'
 # source path for annotations created or reviewed by you
 # relevant for creation of new dataset (option run_config: 2)
 #   -> might be easier to just copy annotation files to default location
-reviewed_annotation_source: '/output/annotations'
+reviewed_annotation_source: '/output'
 
 # source path for automatically generated combined annotations 
 # Only relevant for creation of new dataset (option run_config: 2)
 # if unsure, leave unchanged. 
-annotation_destination: '/output/combined_annotations'
+annotation_destination: '/output'
 
 
 #DFW for local testing:
@@ -81,7 +81,7 @@ annotation_destination: '/output/combined_annotations'
 
 ## Model Parameters
 # threshold for predictions
-thresh: 0.9
+thresh: 0.5
 # number of annotations above threshold for hourly presence (default = 15)
 simple_limit: 15
 # threshold for sequence criterion (default = 0.9)

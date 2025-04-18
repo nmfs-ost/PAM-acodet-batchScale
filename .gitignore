@@ -14,3 +14,6 @@ generated*
 acodet/src/tmp_*
 .idea/*
 .idea
+
+#Ignore file used to help cloudrun know when to stop retrying
+donefile.txt
