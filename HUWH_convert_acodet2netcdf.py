@@ -26,7 +26,8 @@ for i in thresholds:
     audio_file_extension = '.wav'
     audio_channel = 1
     class_label = 'HB'
-
+	
+    print(os.path.dirname(nc_files_out_dir))
     os.makedirs(os.path.dirname(nc_files_out_dir),exist_ok=True)
 
     detector_suffix='_annot_Humpback_20221130.txt'
