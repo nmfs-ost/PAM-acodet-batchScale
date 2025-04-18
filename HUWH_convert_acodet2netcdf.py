@@ -10,6 +10,7 @@ import os
 import pandas as pd
 import uuid
 import sys
+import shutil
 
 if len(sys.argv)==1:
     thresh = 0.5
@@ -71,9 +72,12 @@ for i in thresholds:
         # update data in the ecosound Annotation object and check for errors
         detec.data = data
         detec.check_integrity(verbose=True, ignore_frequency_duplicates=True)
-
+	
         # save a nc file:
-        detec.to_netcdf(os.path.join(nc_files_out_dir,audio_file_name+audio_file_extension+'.nc'))
+        detec.to_netcdf(f"./netcdf_{i}.nc")
+        
+        #copy to dest
+        shutil.copy(f"./netcdf_{i}.nc",os.path.join(nc_files_out_dir,audio_file_name+audio_file_extension+'.nc'))
 
         print('a')
 
