@@ -12,8 +12,6 @@ import uuid
 import sys
 import shutil
 
-print(sys.argv)
-
 if len(sys.argv)==1:
     thresh = 0.5
 else:
@@ -80,6 +78,4 @@ for i in thresholds:
         
         #copy to dest
         shutil.copy(f"./netcdf_{i}.nc",os.path.join(nc_files_out_dir,audio_file_name+audio_file_extension+'.nc'))
-
-        print('a')
 

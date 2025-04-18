@@ -37,5 +37,5 @@ services:
       - ./input:/input:shared,ro
       - ./output:/output:shared
     environment:
-      THRESHOLD: ${THRESHOLD}
+      THRESH: ${THRESH}
       PREDICTION_WINDOW_LIMIT: ${PREDICTION_WINDOW_LIMIT}
