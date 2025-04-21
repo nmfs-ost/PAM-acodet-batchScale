@@ -78,4 +78,12 @@ for i in thresholds:
         
         #copy to dest
         shutil.copy(f"./netcdf_{i}.nc",os.path.join(nc_files_out_dir,audio_file_name+audio_file_extension+'.nc'))
+    
+    summary_path = os.path.join(nc_files_out_dir,'detections_dataset.nc')
+    #delete if already exists: otherwise will misbehave if run multiple times. 
+    if os.path.isfile(summary_path):
+        os.remove(summary_path)
+    detec_all = Annotation()
+    detec_all.from_netcdf(nc_files_out_dir, verbose=True)
+    detec.to_netcdf(summary_path)
 
