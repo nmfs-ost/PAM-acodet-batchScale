@@ -85,5 +85,5 @@ for i in thresholds:
         os.remove(summary_path)
     detec_all = Annotation()
     detec_all.from_netcdf(nc_files_out_dir, verbose=True)
-    detec.to_netcdf(summary_path)
+    detec_all.to_netcdf(summary_path)
 
