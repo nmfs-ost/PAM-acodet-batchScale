@@ -17,3 +17,5 @@ acodet/src/tmp_*
 
 #Ignore file used to help cloudrun know when to stop retrying
 donefile.txt
+
+.env

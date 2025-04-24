@@ -39,3 +39,4 @@ services:
     environment:
       THRESH: ${THRESH}
       PREDICTION_WINDOW_LIMIT: ${PREDICTION_WINDOW_LIMIT}
+      DATA_PATH: ${DATA_PATH}
