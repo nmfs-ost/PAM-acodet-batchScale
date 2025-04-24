@@ -17,6 +17,10 @@ if len(sys.argv)==2:
 else:
     thresh = sys.argv[2]
 
+#feed in ENV variable
+audio_dir = sys.argv[1]
+audio_dir = audio_dir.replace("/","\\")
+
 thresholds = list(set([0.5,thresh]))
 
 for i in thresholds:
@@ -54,7 +58,7 @@ for i in thresholds:
         data.frequency_min = file_data['Low Freq (Hz)']
         data.confidence = file_data['Prediction/Comments']
         data.audio_file_name = audio_file_name
-        data.audio_file_dir = sys.argv[1]
+        data.audio_file_dir = f"C:\\pamdata_mount\\{audio_dir}"
         data.audio_file_extension = audio_file_extension
         file_timestamp = filename_to_datetime(audio_file_name + audio_file_extension)
         data.audio_file_start_date = file_timestamp[0]
