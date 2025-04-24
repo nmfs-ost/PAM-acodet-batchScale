@@ -18,6 +18,8 @@ while [ ! -f "donefile.txt" ]; do
   ((ITERATION++))
 done
 
+CMD3+=" $DATA_PATH"
 [ ! -z "${THRESH}" ] && CMD3+=" $THRESH"
 
-eval $CMD3 
+echo $CMD3
+eval $CMD3

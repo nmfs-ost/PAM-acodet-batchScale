@@ -12,10 +12,10 @@ import uuid
 import sys
 import shutil
 
-if len(sys.argv)==1:
+if len(sys.argv)==2:
     thresh = 0.5
 else:
-    thresh = sys.argv[1]
+    thresh = sys.argv[2]
 
 thresholds = list(set([0.5,thresh]))
 
@@ -54,7 +54,7 @@ for i in thresholds:
         data.frequency_min = file_data['Low Freq (Hz)']
         data.confidence = file_data['Prediction/Comments']
         data.audio_file_name = audio_file_name
-        data.audio_file_dir = "NA when running on cloud due to mount abstraction"
+        data.audio_file_dir = sys.argv[1]
         data.audio_file_extension = audio_file_extension
         file_timestamp = filename_to_datetime(audio_file_name + audio_file_extension)
         data.audio_file_start_date = file_timestamp[0]
