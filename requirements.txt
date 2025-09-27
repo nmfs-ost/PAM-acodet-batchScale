@@ -137,7 +137,7 @@ tensorflow-metadata==1.16.1
 termcolor==2.5.0
 threadpoolctl==3.5.0
 toml==0.10.2
-tornado==6.4.2
+tornado==6.5.1
 tqdm==4.67.1
 twine==5.1.1
 typeguard==2.13.3
