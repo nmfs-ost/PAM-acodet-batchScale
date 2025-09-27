@@ -65,22 +65,6 @@ def read_yaml_from_gcs_and_xcom(**context):
         log.error(f"Error reading or parsing YAML from GCS: {e}")
         raise # Re-raise the exception to fail the task if something goes wrong
 
-#def use_parsed_data_downstream(**context):
-#    """
-#    A dummy downstream task to demonstrate how to pull the parsed YAML data from XCom.
-#    """
-#    log.info("Downstream task started. Attempting to pull data from XCom.")
-#    # Pull the dictionary from XCom using the same key it was pushed with
-#    parsed_data = context['ti'].xcom_pull(key='gcs_yaml_data', task_ids='read_yaml_from_gcs')
-
-#    if parsed_data:
-#        log.info("Successfully pulled data from XCom:")
-#        log.info(f"Type of pulled data: {type(parsed_data)}")
-#        log.info(f"Content: {parsed_data}")
-#    else:
-#        log.warning("No data found in XCom for 'gcs_yaml_data'.")
-
-
 @task
 def deploy_job(run, **context):
 
@@ -366,7 +350,7 @@ def zip_inputs(outputs,sources):
     return [{"output":o,"run":r} for o,r in zip(outputs,sources)]
 
 @dag(
-    dag_id='humpback_minke_dag',
+    dag_id='nefsc_humpback_dag',
     start_date=days_ago(1),
     schedule_interval=None, # Run manually or set a schedule
     catchup=False,
@@ -377,7 +361,7 @@ def zip_inputs(outputs,sources):
         "run_params_yaml_path": "composer/my_run_hb/my_parameters.yml",
         "summary_dir": "composer/my_run_hb/"
     },
-    doc_md="NEFSC minke detector authored by Vincent Kather and migrated by Dan Woodrich"
+    doc_md="NEFSC humpback detector authored by Vincent Kather and migrated by Dan Woodrich"
 )
 def dag_():
 
