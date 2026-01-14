@@ -150,7 +150,7 @@ wrapt==1.14.1
 zipp==3.21.0
 PySocks==1.7.1 
 beautifulsoup4==4.13.3 
-filelock==3.17.0 
+filelock==3.20.3 
 gdown==5.2.0 
 soupsieve==2.6
 
